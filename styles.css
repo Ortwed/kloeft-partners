@@ -1,14 +1,13 @@
 :root {
-  --bg: #F4F8F1;
-  --bg-soft: #E6F0DF;
-  --ink: #16291F;
-  --forest: #1B3A2B;
-  --forest-2: #244A37;
-  --moss: #2D5A43;
-  --leaf: #A9D18E;
-  --mist: #DCEBD3;
-  --line: #C9DDBE;
-  --photo: #D5E6C9;
+  --sage: #8FBC8F;          /* hovedfarve: DarkSeaGreen, rgb(143,188,143) */
+  --sage-light: #B9D6B9;
+  --bg: #F5F9F5;
+  --bg-soft: #E4EFE4;
+  --ink: #1A2B1A;
+  --forest: #2B452B;        /* mørk nuance af hovedfarven til overskrifter */
+  --moss: #3A633A;          /* knapper og links */
+  --line: #C6DCC6;
+  --photo: #D3E6D3;
   --white: #FFFFFF;
   --gutter: clamp(16px, 5vw, 48px);
   --section-y: clamp(64px, 10vw, 96px);
@@ -31,16 +30,16 @@ a { color: var(--moss); }
 a:hover { color: var(--ink); }
 
 h1, h2, h3 {
-  font-family: Fraunces, Georgia, serif;
-  font-weight: 400;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
 p { margin: 0; }
 
-:focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--moss); outline-offset: 3px; border-radius: 4px; }
 
 .skip-link {
   position: absolute; left: 16px; top: -48px;
@@ -53,7 +52,7 @@ p { margin: 0; }
 
 .section { padding: var(--section-y) var(--gutter); }
 .section--soft { background: var(--bg-soft); }
-.section--dark { background: var(--forest); color: #EEF6E9; }
+.section--sage { background: var(--sage); color: var(--ink); }
 
 .split {
   display: grid;
@@ -64,7 +63,7 @@ p { margin: 0; }
 .stack { display: flex; flex-direction: column; gap: 20px; font-size: 17px; }
 
 .h2 { font-size: clamp(30px, 4.5vw, 40px); line-height: 1.15; color: var(--forest); }
-.section--dark .h2 { color: var(--white); }
+.section--sage .h2 { color: var(--ink); }
 
 /* Buttons */
 .btn {
@@ -78,8 +77,8 @@ p { margin: 0; }
 .btn:hover { transform: translateY(-1px); }
 .btn--primary { background: var(--moss); color: var(--white); }
 .btn--primary:hover { background: var(--forest); color: var(--white); }
-.btn--light { background: var(--leaf); color: #12261B; }
-.btn--light:hover { background: #BEE0A6; color: #12261B; }
+.btn--dark { background: var(--ink); color: var(--white); }
+.btn--dark:hover { background: var(--forest); color: var(--white); }
 
 /* Header */
 .site-header {
@@ -99,8 +98,8 @@ p { margin: 0; }
 }
 
 .logo {
-  font-family: Fraunces, Georgia, serif;
-  font-size: 24px; color: var(--ink); text-decoration: none;
+  font-size: 22px; font-weight: 700; letter-spacing: -0.03em;
+  color: var(--ink); text-decoration: none;
 }
 
 .nav { display: flex; align-items: center; gap: 28px; font-size: 15px; }
@@ -133,13 +132,13 @@ p { margin: 0; }
 .hero .split { align-items: end; }
 .eyebrow {
   margin-bottom: 20px; font-size: 14px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--leaf);
+  text-transform: uppercase; font-weight: 600; color: var(--forest);
 }
 .hero h1 {
   font-size: clamp(42px, 7vw, 68px); line-height: 1.05;
-  color: var(--white); max-width: 12ch;
+  color: var(--ink); max-width: 13ch;
 }
-.hero-lead { margin-bottom: 32px; font-size: clamp(17px, 2vw, 20px); color: var(--mist); }
+.hero-lead { margin-bottom: 32px; font-size: clamp(17px, 2vw, 20px); color: var(--ink); }
 
 /* Cards */
 .grid { display: grid; gap: 24px; }
@@ -154,17 +153,17 @@ p { margin: 0; }
 .card h3 { font-size: 24px; color: var(--forest); line-height: 1.2; }
 .card p { font-size: 16px; }
 
-.card--dark { background: var(--forest-2); border-color: transparent; gap: 14px; }
-.card--dark h3 { color: var(--white); font-size: 26px; }
-.card--dark p { color: var(--mist); }
+.card--sage { background: #E8F2E8; border-color: transparent; gap: 14px; }
+.card--sage h3 { color: var(--forest); font-size: 24px; }
+.card--sage p { color: var(--ink); }
 
 .card-num {
-  font-family: Fraunces, Georgia, serif; font-size: 15px; color: var(--leaf);
+  font-size: 14px; font-weight: 600; letter-spacing: 0.06em; color: var(--moss);
 }
 
 .values-head { margin-bottom: 48px; }
 .services-head { margin-bottom: 56px; }
-.services-head p { font-size: 17px; color: var(--mist); }
+.services-head p { font-size: 17px; color: var(--ink); }
 
 /* Team */
 .person { flex-direction: row; align-items: center; gap: 24px; padding: 24px; }
@@ -185,10 +184,10 @@ p { margin: 0; }
 .contact-box p { font-size: 17px; max-width: 46ch; margin-top: 16px; }
 .contact-label { display: block; color: var(--moss); font-size: 15px; margin-bottom: 4px; }
 .contact-email {
-  font-family: Fraunces, Georgia, serif;
+  font-weight: 600; letter-spacing: -0.02em;
   font-size: clamp(22px, 3.4vw, 34px);
   color: var(--forest); text-decoration: none; word-break: break-word;
-  border-bottom: 2px solid var(--leaf);
+  border-bottom: 2px solid var(--sage);
 }
 .contact-email:hover { color: var(--moss); border-bottom-color: var(--moss); }
 
