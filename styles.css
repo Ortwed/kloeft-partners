@@ -1,0 +1,198 @@
+:root {
+  --bg: #F4F8F1;
+  --bg-soft: #E6F0DF;
+  --ink: #16291F;
+  --forest: #1B3A2B;
+  --forest-2: #244A37;
+  --moss: #2D5A43;
+  --leaf: #A9D18E;
+  --mist: #DCEBD3;
+  --line: #C9DDBE;
+  --photo: #D5E6C9;
+  --white: #FFFFFF;
+  --gutter: clamp(16px, 5vw, 48px);
+  --section-y: clamp(64px, 10vw, 96px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--moss); }
+a:hover { color: var(--ink); }
+
+h1, h2, h3 {
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p { margin: 0; }
+
+:focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 4px; }
+
+.skip-link {
+  position: absolute; left: 16px; top: -48px;
+  background: var(--forest); color: var(--white);
+  padding: 8px 16px; border-radius: 8px; z-index: 100;
+}
+.skip-link:focus { top: 12px; color: var(--white); }
+
+.wrap { max-width: 1200px; margin: 0 auto; }
+
+.section { padding: var(--section-y) var(--gutter); }
+.section--soft { background: var(--bg-soft); }
+.section--dark { background: var(--forest); color: #EEF6E9; }
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+  gap: clamp(32px, 6vw, 64px);
+}
+
+.stack { display: flex; flex-direction: column; gap: 20px; font-size: 17px; }
+
+.h2 { font-size: clamp(30px, 4.5vw, 40px); line-height: 1.15; color: var(--forest); }
+.section--dark .h2 { color: var(--white); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color .2s, color .2s, transform .2s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--primary { background: var(--moss); color: var(--white); }
+.btn--primary:hover { background: var(--forest); color: var(--white); }
+.btn--light { background: var(--leaf); color: #12261B; }
+.btn--light:hover { background: #BEE0A6; color: #12261B; }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(244, 248, 241, 0.92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  -webkit-backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.site-header.is-scrolled { border-bottom-color: var(--line); }
+
+.header-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 18px var(--gutter);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+
+.logo {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 24px; color: var(--ink); text-decoration: none;
+}
+
+.nav { display: flex; align-items: center; gap: 28px; font-size: 15px; }
+.nav a:not(.btn) { color: var(--moss); text-decoration: none; }
+.nav a:not(.btn):hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.nav .btn { padding: 11px 22px; font-weight: 500; }
+
+.nav-toggle {
+  display: none;
+  background: none; border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 16px; font: inherit; font-size: 15px; color: var(--forest); cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-block; }
+  .nav {
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: 8px var(--gutter) 20px;
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav a:not(.btn) { padding: 12px 0; border-bottom: 1px solid var(--bg-soft); font-size: 17px; }
+  .nav .btn { margin-top: 16px; text-align: center; }
+}
+
+/* Hero */
+.hero { padding: clamp(72px, 11vw, 112px) var(--gutter) clamp(80px, 12vw, 120px); }
+.hero .split { align-items: end; }
+.eyebrow {
+  margin-bottom: 20px; font-size: 14px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--leaf);
+}
+.hero h1 {
+  font-size: clamp(42px, 7vw, 68px); line-height: 1.05;
+  color: var(--white); max-width: 12ch;
+}
+.hero-lead { margin-bottom: 32px; font-size: clamp(17px, 2vw, 20px); color: var(--mist); }
+
+/* Cards */
+.grid { display: grid; gap: 24px; }
+.grid--values { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+.grid--services { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+.grid--team { grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); margin-top: 72px; }
+
+.card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 16px;
+  padding: 32px; display: flex; flex-direction: column; gap: 12px;
+}
+.card h3 { font-size: 24px; color: var(--forest); line-height: 1.2; }
+.card p { font-size: 16px; }
+
+.card--dark { background: var(--forest-2); border-color: transparent; gap: 14px; }
+.card--dark h3 { color: var(--white); font-size: 26px; }
+.card--dark p { color: var(--mist); }
+
+.card-num {
+  font-family: Fraunces, Georgia, serif; font-size: 15px; color: var(--leaf);
+}
+
+.values-head { margin-bottom: 48px; }
+.services-head { margin-bottom: 56px; }
+.services-head p { font-size: 17px; color: var(--mist); }
+
+/* Team */
+.person { flex-direction: row; align-items: center; gap: 24px; padding: 24px; }
+.photo {
+  flex: 0 0 120px; height: 150px; border-radius: 12px;
+  background: var(--photo); color: var(--moss);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; letter-spacing: 0.08em;
+}
+.person .role { margin-top: 6px; color: var(--moss); }
+
+/* Contact */
+.contact { padding: clamp(72px, 10vw, 96px) var(--gutter) 40px; }
+.contact-box {
+  display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 32px;
+  padding-bottom: 56px; border-bottom: 1px solid var(--line);
+}
+.contact-box p { font-size: 17px; max-width: 46ch; margin-top: 16px; }
+.contact-label { display: block; color: var(--moss); font-size: 15px; margin-bottom: 4px; }
+.contact-email {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(22px, 3.4vw, 34px);
+  color: var(--forest); text-decoration: none; word-break: break-word;
+  border-bottom: 2px solid var(--leaf);
+}
+.contact-email:hover { color: var(--moss); border-bottom-color: var(--moss); }
+
+.footer-meta {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  padding-top: 24px; font-size: 14px; color: var(--moss);
+}
